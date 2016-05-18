@@ -24,32 +24,11 @@
 					;"x86_64-pc-linux-gnu"
 				   "x86_64-pc-windows-msvc"
 				   "x86_64-unknown-freebsd")
-		    :exclude-sources ("/usr/include/inttypes.h"
-				      "/usr/include/math.h"
-				      "/usr/include/stdarg.h"
-				      "/usr/include/stddef.h"
-				      "/usr/include/stdint.h"
-				      "/usr/include/sys/types.h")
-		    ;:exclude-definitions
-		    #+nil ("asin" "sin"  "acos" "cos"
-			    "atan" "tan" "exp" "log"
-			    "sqrt" "floor" "round"))
-
-(autowrap:c-include "/usr/include/wayland-client-protocol.h"
-		    :spec-path *spec-path*
-		    :exclude-arch ("arm-pc-linux-gnu"
-				   "i386-unknown-freebsd"
-				   "i686-apple-darwin9"
-				   "i686-pc-linux-gnu"
-				   "i686-pc-windows-msvc"
-				   "x86_64-apple-darwin9"
-					;"x86_64-pc-linux-gnu"
-				   "x86_64-pc-windows-msvc"
-				   "x86_64-unknown-freebsd")
-		    :exclude-definitions
-		    ("asin" "sin"  "acos" "cos"
-			    "atan" "tan" "exp" "log"
-			    "sqrt" "floor" "round"))
+		    :exclude-sources ("/usr/include/"
+				      "/usr/include/bits/"
+				      "/usr/include/sys/")
+		    :include-sources ("/usr/include/wayland-client-core.h"
+				      "/usr/include/wayland-client-protocol.h"))
 
 #+ni
 (cffi:use-foreign-library "libwayland-client.so")
