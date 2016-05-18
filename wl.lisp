@@ -39,4 +39,8 @@
 ;; wl-display-get-registry is an inline function WHY?
 
 #+nil
-(defpar *registry* (wl-display-get-))
+(defpar *registry*
+    (wl-proxy-marshal-constructor *display* 
+				  +WL-DISPLAY-GET-REGISTRY+
+				  WL-REGISTRY-INTERFACE
+				  ))
