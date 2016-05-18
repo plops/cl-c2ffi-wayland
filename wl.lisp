@@ -30,11 +30,13 @@
 		    :include-sources ("/usr/include/wayland-client-core.h"
 				      "/usr/include/wayland-client-protocol.h"))
 
-#+ni
 (cffi:use-foreign-library "libwayland-client.so")
 
+;; example code from https://github.com/hdante/hello_wayland/helpers.c
 #+nil
 (defpar *display* (wl-display-connect (cffi:null-pointer)))
 
+;; wl-display-get-registry is an inline function WHY?
+
 #+nil
-(defpar *registry* (wl-display-))
+(defpar *registry* (wl-display-get-))
